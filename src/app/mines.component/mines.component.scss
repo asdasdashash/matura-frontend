@@ -72,26 +72,51 @@ table {
 td {
   width: 10vh;
   height: 10vh;
-  min-width: 10vh;
-  min-height: 10vh;
-  max-width: 10vh;
-  max-height: 10vh;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 100px;
+  max-height: 100px;
   transition: 0.25s;
   border-radius: 15%;
   background-color: #2c2f36;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  
+  /* Fix alignment - use flex for perfect centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Prevent text shifting */
   text-align: center;
   vertical-align: middle;
+  
+  /* Fixed emoji size */
   font-size: 5rem;
-  line-height: 10vh;
+  line-height: 1;
+  
+  /* Prevent any layout shift */
   overflow: hidden;
+  position: relative;
+
+  @media (max-width: 1366px) {
+    width: 8vh;
+    height: 8vh;
+    font-size: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 7vh;
+    height: 7vh;
+    font-size: 3rem;
+  }
+
+  &:hover {
+    scale: 1.05;
+    cursor: pointer;
+    background-color: #3a3f47;
+  }
 }
 
-td:hover {
-  scale: 1.05;
-  cursor: pointer;
-  background-color: #3a3f47;
-}
 
 #mineMenu {
   position: fixed;
@@ -245,21 +270,24 @@ td.explosion-appear {
 @keyframes diamondScale {
   0% {
     font-size: 0;
+    transform: scale(0);
   }
   100% {
     font-size: 5rem;
+    transform: scale(1);
   }
 }
 
 @keyframes explosionScale {
   0% {
     font-size: 0;
+    transform: scale(0);
   }
   100% {
     font-size: 5rem;
+    transform: scale(1);
   }
 }
-
 
 .profits {
   position: fixed;
