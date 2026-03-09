@@ -29,23 +29,24 @@ li:hover {
 
 #overlay {
   position: fixed;
-  top: 70px;
+  top: 7vh;
   left: 0;
   width: 100%;
-  height: calc(100% - 70px);
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(3px);
+  height: calc(100% - 7vh);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 150;
+  backdrop-filter: blur(3px);
 }
 
 #multiplierDisplay {
   position: fixed;
-  top: 90px;
-  background: #1a1d26;
+  top: 10vh;
+  background-color: #1a1d26;
   color: white;
-  padding: 0.8rem 2rem;
-  border-radius: 12px;
-  font-size: 1.4rem;
+  padding: 2vh 4vh;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  font-size: 1.5rem;
   font-weight: bold;
   border: 1px solid #2c2f36;
 }
@@ -58,29 +59,47 @@ li:hover {
 }
 
 table {
-  width: min(90vmin, 520px);
-  height: min(90vmin, 520px);
-  border-spacing: 1rem;
-  background: #1a1d26;
+  height: 60vh;
+  width: 60vh;
+  margin-top: 0vh;
+  border-spacing: 3vh;
+  background-color: #1a1d26;
   border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
   border: 1px solid #2c2f36;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 td {
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  background: #2c2f36;
+  width: 10vh;
+  height: 10vh;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 100px;
+  max-height: 100px;
+  transition: 0.25s;
+  border-radius: 15%;
+  background-color: #2c2f36;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   text-align: center;
   vertical-align: middle;
-  font-size: clamp(1.6rem, 5vmin, 3rem);
-  transition: 0.2s;
-  cursor: pointer;
-}
+  
+  /* SMALLER emoji size - fits better */
+  font-size: 4rem;
+  line-height: 1;
+  
+  overflow: hidden;
+  position: relative;
 
-td:hover {
-  transform: scale(1.05);
-  background: #3a3f47;
+  &:hover {
+    scale: 1.05;
+    cursor: pointer;
+    background-color: #3a3f47;
+  }
 }
 
 
@@ -89,25 +108,28 @@ td:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(90vw, 400px);
-  padding: 2rem;
-  background: #1a1d26;
+  height: 30vh;
+  width: 40vh;
+  background-color: #1a1d26;
   border-radius: 15px;
-  border: 1px solid #2c2f36;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 3vh;
   color: white;
+  flex-direction: column;
   z-index: 200;
+  padding: 2vh;
+  border: 1px solid #2c2f36;
 }
-
 
 #mineMenu div {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 1vh;
+  width: 80%;
 }
-
 
 #mineMenu span {
   font-weight: bold;
@@ -115,50 +137,55 @@ td:hover {
 }
 
 #mineMenu input {
-  padding: .6rem;
+  padding: 1vh;
   border-radius: 8px;
   border: 1px solid #2c2f36;
-  background: #2c2f36;
+  font-size: 1rem;
+  background-color: #2c2f36;
   color: white;
 }
 
 #mineMenu input:focus {
   outline: 2px solid #4CAF50;
+  border-color: #4CAF50;
 }
 
 #mineMenu button {
-  height: 42px;
-  padding: 0 20px;
-  border-radius: 25px;
-  border: none;
-  background: #4CAF50;
+  height: 5vh;
+  width: 15vh;
+  background-color: #4CAF50;
   color: white;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
+  border-radius: 25px;
+  transition: 0.2s;
+  font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: .2s;
 }
 
 #mineMenu button:hover {
-  transform: scale(1.05);
-  background: #45a049;
+  scale: 105%;
   cursor: pointer;
+  background-color: #45a049;
 }
 
 #cashoutWindow {
-  position: fixed;
-  bottom: 2rem;
   display: flex;
+  position: fixed;
+  bottom: 10vh;
+  background-color: #4CAF50;
+  height: 6vh;
+  width: 18vh;
+  border-radius: 25px;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 180px;
-  background: #4CAF50;
-  border-radius: 25px;
-  font-weight: bold;
   color: white;
-  box-shadow: 0 4px 15px rgba(76,175,80,.4);
+  transition: 0.2s;
+  box-shadow: 0px 4px 15px rgba(76, 175, 80, 0.4);
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
-
 
 #cashoutWindow:hover {
   scale: 105%;
@@ -228,18 +255,22 @@ td.explosion-appear {
 @keyframes diamondScale {
   0% {
     font-size: 0;
+    transform: scale(0);
   }
   100% {
-    font-size: 4rem;
+    font-size: 4rem; /* Changed from 5rem */
+    transform: scale(1);
   }
 }
 
 @keyframes explosionScale {
   0% {
     font-size: 0;
+    transform: scale(0);
   }
   100% {
-    font-size: 4rem;
+    font-size: 4rem; /* Changed from 5rem */
+    transform: scale(1);
   }
 }
 
@@ -248,22 +279,25 @@ td.explosion-appear {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(90vw, 380px);
-  background: linear-gradient(135deg,#1a1d26,#252933);
+  height: auto;
+  min-height: 15vh;
+  width: 40vh;
+  background: linear-gradient(135deg, #1a1d26 0%, #252933 100%);
   border-radius: 15px;
-  border: 1px solid #3a3f4d;
-  padding: 2rem;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
   align-items: center;
+  justify-content: center;
+  gap: 2vh;
   color: white;
-  z-index: 1000;
+  flex-direction: column;
+  z-index: 1100;
+  padding: 3vh 2vh;
+  border: 1px solid #3a3f4d;
   
   span {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #10b981;
+    font-size: 1.2rem;
+    font-weight: 600;
     
     &:first-child {
       font-size: 1.5rem;
