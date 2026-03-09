@@ -52,14 +52,42 @@
 .game-card {
   background: #1a1d26;
   border-radius: 15px;
-  padding: 4vh;
+  padding: 2.5rem; /* Fixed padding instead of vh/vw */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2vh;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  gap: 1.2rem; /* Fixed gap */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   cursor: pointer;
+  
+  /* Fixed height - no stretching */
+  height: 380px;
+  justify-content: space-between;
+
+  @media (max-width: 1366px) {
+    height: 380px;
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    height: 250px;
+    padding: 1rem;
+  }
+
+  &:not(.disabled):hover {
+    transform: translateY(-10px);
+    background-color: #1a1d39;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+    }
+  }
 }
 
 .game-card:not(.disabled):hover {
@@ -77,8 +105,9 @@
 }
 
 .game-icon {
-  font-size: 5rem;
-  margin-bottom: 2vh;
+  font-size: 4rem; /* Smaller than 5rem */
+  margin-bottom: 0; /* Remove extra margin */
+  flex-shrink: 0; /* Don't let it shrink */
 }
 
 .game-title {
@@ -91,18 +120,42 @@
 .game-description {
   color: #aaa;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex-grow: 1; /* Take up available space */
+  display: flex;
+  align-items: center;
+  max-height: 60px; /* Limit description height */
+  overflow: hidden;
 }
 
 .play-button {
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
-  padding: 1.5vh 4vh;
+  padding: 0.8rem 2rem; /* Fixed padding */
   border-radius: 25px;
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
   transition: 0.2s;
-  box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+  white-space: nowrap; /* Prevent text wrapping */
+  min-width: 140px; /* Ensure button is wide enough */
+  text-align: center;
+
+  &:not(.disabled-btn):hover {
+    background: #45a049;
+    transform: scale(1.05);
+  }
+
+  &.disabled-btn {
+    background: #555;
+    cursor: not-allowed;
+    box-shadow: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
 }
 
 .play-button:not(.disabled-btn):hover {
