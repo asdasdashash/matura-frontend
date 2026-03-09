@@ -285,22 +285,18 @@ td {
 
 @keyframes diamondScale {
   0% {
-    font-size: 0;
     transform: scale(0);
   }
   100% {
-    font-size: clamp(1.6rem, 5vmin, 3rem);
     transform: scale(1);
   }
 }
 
 @keyframes explosionScale {
   0% {
-    font-size: 0;
     transform: scale(0);
   }
   100% {
-    font-size: clamp(1.6rem, 5vmin, 3rem);
     transform: scale(1);
   }
 }
