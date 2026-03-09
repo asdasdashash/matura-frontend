@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class BalanceService {
   }
   
   private fetchBalance(userId: string) {
-    this.http.get<{ balance: number }>(`http://localhost:3000/api/balance/${userId}`)
+    this.http.get<{ balance: number }>(`${environment.apiUrl}/balance/${userId}`)
       .subscribe({
         next: (response) => {
           this.balance = response.balance;
