@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'REPLACE_WITH_BACKEND_URL/api'
+  apiUrl: 'https://matura-backend-ulqj.onrender.com/api'
 };
