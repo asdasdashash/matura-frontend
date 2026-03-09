@@ -81,33 +81,30 @@ td {
   background-color: #2c2f36;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   
-  /* Fix alignment - use flex for perfect centering */
   display: flex;
   align-items: center;
   justify-content: center;
   
-  /* Prevent text shifting */
   text-align: center;
   vertical-align: middle;
   
-  /* Fixed emoji size */
-  font-size: 5rem;
+  /* SMALLER emoji size - fits better */
+  font-size: 4rem;
   line-height: 1;
   
-  /* Prevent any layout shift */
   overflow: hidden;
   position: relative;
 
   @media (max-width: 1366px) {
     width: 8vh;
     height: 8vh;
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   @media (max-width: 768px) {
     width: 7vh;
     height: 7vh;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   &:hover {
@@ -273,7 +270,7 @@ td.explosion-appear {
     transform: scale(0);
   }
   100% {
-    font-size: 5rem;
+    font-size: 4rem; /* Changed from 5rem */
     transform: scale(1);
   }
 }
@@ -284,7 +281,7 @@ td.explosion-appear {
     transform: scale(0);
   }
   100% {
-    font-size: 5rem;
+    font-size: 4rem; /* Changed from 5rem */
     transform: scale(1);
   }
 }
