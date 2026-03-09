@@ -61,89 +61,186 @@ nav {
 }
 
 .balloonLayout {
-    position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5vh;
-
-    height: 40vh;
-    width: 40vh;
-    z-index: 1;
-
-
-}
-
-
-
-#balloon{
-    z-index: 100;
-    border-radius: 100%;
-    height:13vh;
-    width: 10vh;
-    background-color: #aaa;
-    transition: 0.15s;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 3vh;
-    
-}
-
-.pump {
-  height: 10vh;
-  width: 3vh;
   position: fixed;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transform-origin: center center;
-  background-color: #aaa;
-  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  z-index: 1;
+}
+
+#balloon {
+  z-index: 100;
+  height: 24vh;
+  width: 18vh;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 50%, #d63031 100%);
+  transition: transform 0.15s ease-out, background 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3vh;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
   
-  &:hover {
-    cursor: pointer;
-    transform: translate(-50%, -50%) scale(1.1);
-    background-color: white;
+  // Oval shape - taller than wide
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  
+  // Balloon knot/tie at bottom
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(to bottom, #d63031, #a52a2a);
+    border-radius: 50% 50% 0 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 }
 
+// Balloon string
+// Balloon string
 
+.pump {
+  position: relative;
+  margin-top: 12vh;
+  width: 5vh;
+  height: 12vh;
+  cursor: pointer;
+  z-index: 100;
+  
+  // T-shaped handle top (BEHIND body)
+  & > span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4vh;
+    height: 1.5vh;
+    background: #888;
+    border-radius: 0.5vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: block;
+    z-index: 1;
+  }
+  
+  // Pump handle shaft (vertical part - BEHIND body)
+  &::after {
+    content: '';
+    position: absolute;
+    top: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.2vh;
+    height: 4vh;
+    background: #999;
+    border-radius: 0.3vh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  // Pump body (cylinder - IN FRONT, solid color)
+  // Pump body (cylinder - IN FRONT, solid color)
+&::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5vh;
+  height: 8vh;
+  background: linear-gradient(to right, #555, #666, #555);
+  border-radius: 0.8vh;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Pump pressing animation - ONE slow pump
+// Pump pressing animation - smooth up and down
+.pump.pumping {
+  &::after {
+    animation: pumpPress 0.6s ease-in-out;
+  }
+  
+  & > span {
+    animation: handlePress 0.6s ease-in-out;
+  }
+}
+
+@keyframes pumpPress {
+  0%, 100% {
+    height: 4vh;
+    top: 1vh;
+  }
+  50% {
+    height: 2vh;
+    top: 3vh;
+  }
+}
+
+@keyframes handlePress {
+  0%, 100% {
+    top: 0;
+  }
+  50% {
+    top: 2vh;
+  }
+}
 
 #cashoutWindow {
   display: flex;
   position: fixed;
-  bottom: 20vh;
-  background-color: #4CAF50;
+  bottom: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
   height: 6vh;
   width: 18vh;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
   color: white;
-  transition: 0.2s;
+  transition: all 0.2s;
   box-shadow: 0px 4px 15px rgba(76, 175, 80, 0.4);
   flex-direction: column;
   font-weight: bold;
   font-size: 1.1rem;
-
-  left: 50%;
-  transform: translateX(-50%);
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #cashoutWindow:hover {
-  scale: 105%;
-  cursor: pointer;
-  background-color: #45a049;
+  transform: translateX(-50%) scale(1.05);
+  background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
   box-shadow: 0px 6px 20px rgba(76, 175, 80, 0.6);
 }
 
+#overlay {
+  position: fixed;
+  top: 7vh;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 7vh);
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 150;
+  backdrop-filter: blur(3px);
+}
 
 #ballzMenu {
   position: fixed;
@@ -152,7 +249,7 @@ nav {
   transform: translate(-50%, -50%);
   height: 40vh;
   width: 40vh;
-  background-color: #1a1d26;
+  background: linear-gradient(135deg, #1a1d26 0%, #252933 100%);
   border-radius: 15px;
   box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -163,7 +260,7 @@ nav {
   flex-direction: column;
   z-index: 200;
   padding: 2vh;
-  border: 1px solid #2c2f36;
+  border: 1px solid #3a3f4d;
 }
 
 #ballzMenu div {
@@ -174,14 +271,17 @@ nav {
 }
 
 #ballzMenu span {
-  font-weight: bold;
-  color: #aaa;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
 }
 
 #typeIn {
   padding: 1vh;
   border-radius: 8px;
-  border: 1px solid #2c2f36;
+  border: 1px solid #3a3f4d;
   font-size: 1rem;
   background-color: #2c2f36;
   color: white;
@@ -195,69 +295,75 @@ nav {
 #ballzMenu button {
   height: 5vh;
   width: 15vh;
-  background-color: #4CAF50;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
   color: white;
   border: none;
   box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
   border-radius: 25px;
-  transition: 0.2s;
+  transition: all 0.2s;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
 }
 
 #ballzMenu button:hover {
-  scale: 105%;
-  cursor: pointer;
-  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(76, 175, 80, 0.5);
 }
 
-.profits{
+.profits {
   position: fixed;
-  top: 65%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
-  height: 15vh;
+  transform: translate(-50%, -50%);
+  height: auto;
+  min-height: 15vh;
   width: 40vh;
-  background-color: #1a1d26;
+  background: linear-gradient(135deg, #1a1d26 0%, #252933 100%);
   border-radius: 15px;
   box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3vh;
+  gap: 2vh;
   color: white;
   flex-direction: column;
   z-index: 1100;
-  padding: 2vh;
-  border: 1px solid #2c2f36;
+  padding: 3vh 2vh;
+  border: 1px solid #3a3f4d;
+  
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    
+    &:first-child {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #10b981;
+    }
+  }
 }
 
 .profits button {
   height: 5vh;
   width: 15vh;
-  background-color: #4CAF50;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
   color: white;
   border: none;
   box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
   border-radius: 25px;
-  transition: 0.2s;
+  transition: all 0.2s;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1vh;
 }
 
 .profits button:hover {
-  scale: 105%;
-  cursor: pointer;
-  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(76, 175, 80, 0.5);
 }
-
-@keyframes shaking {
-    0%   { transform: translateX(0); }
-    25%  { transform: translateX(2px); }
-    50%  { transform: translateX(-2px); }
-    75%  { transform: translateX(2px); }
-    100%  { transform: translateX(-2px); }
-
-}
-
-

@@ -1,4 +1,14 @@
+:host {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.home-container {
+  height: 100vh;
+  overflow: hidden;
+}
 
 .home-container {
   min-height: 100vh;
@@ -54,7 +64,7 @@
 
 .game-card:not(.disabled):hover {
   transform: translateY(-10px);
-  box-shadow: 0px 8px 25px rgba(76, 175, 80, 0.4);
+  background-color: #1a1d39;
 }
 
 .game-card.disabled {

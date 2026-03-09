@@ -4,34 +4,50 @@
     <h1 class="hero-title">Casino bla bla bla</h1>
     <p class="hero-subtitle">*Insert pametni slogan here*</p>
   </div>
-
+  
   <div class="games-grid">
-    <div class="game-card" routerLink="/mines">
-      <div class="game-icon"></div>
+    <div class="game-card" 
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/mines')">
+      <div class="game-icon">💣</div>
       <h2 class="game-title">Mines</h2>
       <p class="game-description">*Insert pametni description here*</p>
-      <div class="play-button">Play Now</div>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
+      </div>
+    </div>
+    
+    <div class="game-card" 
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/ballz')">
+      <div class="game-icon">🎈</div>
+      <h2 class="game-title">Balloon</h2>
+      <p class="game-description">*Insert pametni description here*</p>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
+      </div>
+    </div>
+    
+    <div class="game-card" 
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/cardGame')">
+      <div class="game-icon">🃏</div>
+      <h2 class="game-title">Cards</h2>
+      <p class="game-description">*Insert pametni description here*</p>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
+      </div>
     </div>
 
-    <div class="game-card" routerLink="/ballz">
-      <div class="game-icon"></div>
-      <h2 class="game-title">Cups</h2>
-      <p class="game-description">Shell</p>
-      <div class="play-button">Play Now</div>
-    </div>
-
-    <div class="game-card" routerLink="/cardGame">
-      <div class="game-icon"></div>
-      <h2 class="game-title">Card Game</h2>
-      <p class="game-description">blablabla</p>
-      <div class="play-button">Locked</div>
-    </div>
-
-    <div class="game-card disabled">
-      <div class="game-icon"></div>
-      <h2 class="game-title">Denar</h2>
-      <p class="game-description">Cookie clicker style game</p>
-      <div class="play-button disabled-btn">Locked</div>
-    </div>
+    <div class="game-card" 
+     [class.disabled]="!isLoggedIn"
+     (click)="navigateToGame('/click-game')">
+  <div class="game-icon">💰</div>
+  <h2 class="game-title">Free Coins</h2>
+  <p class="game-description">Click to earn free money!</p>
+  <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+    {{ isLoggedIn ? 'Earn Now' : 'Login to Play' }}
+  </div>
+</div>
   </div>
 </div>

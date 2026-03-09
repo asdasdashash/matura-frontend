@@ -1,11 +1,35 @@
-<nav>
+<nav class="glass-nav">
   <div class="nav-left">
-    <span class="logo" routerLink="">Casino</span>
+    <div class="logo-container" routerLink="">
+      <span class="logo-icon">♣</span>
+      <span class="logo-text">CASINO</span>
+    </div>
   </div>
+  
+  <div class="balance-container" *ngIf="isLoggedIn">
+    <span class="balance-amount">{{denar | number:'1.2-2'}}</span>
+  </div>
+  
   <div class="nav-right">
-    <div class="balance-display">
-      <span class="balance-label">Balance:</span>
-      <span class="balance-amount">{{denar}}</span>
+    <div class="user-profile-dropdown" *ngIf="isLoggedIn && currentUser">
+      <div class="profile-trigger" (click)="toggleDropdown()">
+        <span class="username">{{currentUser.username}}</span>
+        <span class="chevron" [class.open]="dropdownOpen"></span>
+      </div>
+      
+      <div class="dropdown-menu" [class.show]="dropdownOpen">
+        <div class="dropdown-content">
+          <div class="dropdown-header">Account</div>
+          <button class="logout-item" (click)="logout()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="auth-group" *ngIf="!isLoggedIn">
+      <button class="btn-link" routerLink="/login">Sign In</button>
+      <button class="btn-primary" routerLink="/register">Get Started</button>
     </div>
   </div>
 </nav>

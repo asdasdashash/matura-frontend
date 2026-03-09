@@ -1,49 +1,47 @@
 <app-navbar></app-navbar>
-
 @if (!mineMenuOpen && !showLostMessage) {
-  <div id="multiplierDisplay">Multiplier: {{currentMultiplier}}x</div>
+<div id="multiplierDisplay">Multiplier: {{currentMultiplier}}x</div>
 }
-@if (showLostMessage) {
-  <div id="lostMessage">Luzer</div>
-}
+
 <table>
-  <tr>
-    <td #cell (click) = "checkForMine(1)"></td>
-    <td #cell (click) = "checkForMine(2)"></td>
-    <td #cell (click) = "checkForMine(3)"></td>
-    <td #cell (click) = "checkForMine(4)"></td>
-    <td #cell (click) = "checkForMine(5)"></td>
-  </tr>
-  <tr>
-    <td #cell (click) = "checkForMine(6)"></td>
-    <td #cell (click) = "checkForMine(7)"></td>
-    <td #cell (click) = "checkForMine(8)"></td>
-    <td #cell (click) = "checkForMine(9)"></td>
-    <td #cell (click) = "checkForMine(10)"></td>
-  </tr>
-  <tr>
-    <td #cell (click) = "checkForMine(11)"></td>
-    <td #cell (click) = "checkForMine(12)"></td>
-    <td #cell (click) = "checkForMine(13)"></td>
-    <td #cell (click) = "checkForMine(14)"></td>
-    <td #cell (click) = "checkForMine(15)"></td>
-  </tr>
-  <tr>
-    <td #cell (click) = "checkForMine(16)"></td>
-    <td #cell (click) = "checkForMine(17)"></td>
-    <td #cell (click) = "checkForMine(18)"></td>
-    <td #cell (click) = "checkForMine(19)"></td>
-    <td #cell (click) = "checkForMine(20)"></td>
-  </tr>
-  <tr>
-    <td #cell (click) = "checkForMine(21)"></td>
-    <td #cell (click) = "checkForMine(22)"></td>
-    <td #cell (click) = "checkForMine(23)"></td>
-    <td #cell (click) = "checkForMine(24)"></td>
-    <td #cell (click) = "checkForMine(25)"></td>
-  </tr>
+<tr>
+<td #cell (click) = "checkForMine(1)"></td>
+<td #cell (click) = "checkForMine(2)"></td>
+<td #cell (click) = "checkForMine(3)"></td>
+<td #cell (click) = "checkForMine(4)"></td>
+<td #cell (click) = "checkForMine(5)"></td>
+</tr>
+<tr>
+<td #cell (click) = "checkForMine(6)"></td>
+<td #cell (click) = "checkForMine(7)"></td>
+<td #cell (click) = "checkForMine(8)"></td>
+<td #cell (click) = "checkForMine(9)"></td>
+<td #cell (click) = "checkForMine(10)"></td>
+</tr>
+<tr>
+<td #cell (click) = "checkForMine(11)"></td>
+<td #cell (click) = "checkForMine(12)"></td>
+<td #cell (click) = "checkForMine(13)"></td>
+<td #cell (click) = "checkForMine(14)"></td>
+<td #cell (click) = "checkForMine(15)"></td>
+</tr>
+<tr>
+<td #cell (click) = "checkForMine(16)"></td>
+<td #cell (click) = "checkForMine(17)"></td>
+<td #cell (click) = "checkForMine(18)"></td>
+<td #cell (click) = "checkForMine(19)"></td>
+<td #cell (click) = "checkForMine(20)"></td>
+</tr>
+<tr>
+<td #cell (click) = "checkForMine(21)"></td>
+<td #cell (click) = "checkForMine(22)"></td>
+<td #cell (click) = "checkForMine(23)"></td>
+<td #cell (click) = "checkForMine(24)"></td>
+<td #cell (click) = "checkForMine(25)"></td>
+</tr>
 </table>
-@if (mineMenuOpen) {
+
+@if (mineMenuOpen && gameOver) {
   <div id="overlay"></div>
   <div id="mineMenu">
     <div>
@@ -52,12 +50,22 @@
     </div>
     <div>
       <span>Bet: </span>
-      <input [(ngModel)]="betAmount" [min]="1" [max]="denar">
+      <input [(ngModel)]="betAmount" [min]="0.01" [max]="denar">
+      <input [(ngModel)]="betAmount" [min]="1" [max]="denar" type="range">
     </div>
     <button (click)="confirmMines()">OK</button>
   </div>
 }
-@if (cashoutWindow){
+
+@if (!gameOver) {
+  <div id="overlay"></div>
+  <div class="profits">
+    <span>You {{gameResult}}</span>
+    <button (click)="tryAgain()">Try Again?</button>
+  </div>
+}
+
+@if (cashoutWindow) {
   <div id="cashoutWindow" (click)="cashoutFun()">
     Cashout: {{getPotentialWinnings()}}
   </div>

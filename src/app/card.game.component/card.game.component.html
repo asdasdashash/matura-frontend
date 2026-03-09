@@ -1,11 +1,56 @@
 <app-navbar></app-navbar>
-<div class="card"
-     *ngFor="let card of drawnCards; let i = index" 
-     [id]="'c' + (i + 1)" 
-     (click)="cardClick(card)" 
-     [class.selected]="card.clicked">
-  <span class="card-type">{{ card.cardType }}</span>
+
+<!-- Score displays -->
+<div class="score-display opponent-score" *ngIf="gameStart">
+  <span class="score-label">Opponent</span>
+  <span class="score-value">{{currentOpponentScore}}</span>
 </div>
 
-<button (click)="startGame()">OK</button>
+<div class="score-display player-score" *ngIf="gameStart">
+  <span class="score-label">You</span>
+  <span class="score-value">{{currentPlayerScore}}</span>
+</div>
 
+<div class="card"
+*ngFor="let card of drawnCards; let i = index" 
+[id]="'c' + (i + 1)" 
+(click)="gameStart && card.isPlayerCard ? flipPlayerCard(card) : cardClick(card, i)"
+[class.selected]="card.clicked"
+[class.golden]="card.isGolden && gameStart && (card.revealed || !card.isPlayerCard)"
+[class.player-card-0]="card.isPlayerCard && card.playerCardIndex === 0 && gameStart"
+[class.player-card-1]="card.isPlayerCard && card.playerCardIndex === 1 && gameStart"
+[class.player-card-2]="card.isPlayerCard && card.playerCardIndex === 2 && gameStart"
+[class.opponent-card-0]="!card.isPlayerCard && card.opponentCardIndex === 0 && gameStart"
+[class.opponent-card-1]="!card.isPlayerCard && card.opponentCardIndex === 1 && gameStart"
+[class.opponent-card-2]="!card.isPlayerCard && card.opponentCardIndex === 2 && gameStart"
+[class.flipped]="gameStart && (!card.isPlayerCard || card.revealed)">
+  
+  <div class="card-inner">
+    <div class="card-face card-front">
+      <img [src]="cardsApiUrl + '/cards/Karte/backside.svg'" alt="Card back">
+    </div>
+    
+    <div class="card-face card-back">
+      <img *ngIf="card.imagePath" 
+        [src]="cardsApiUrl + '/cards' + (card.isGolden ? card.goldenImagePath : card.imagePath)"
+        [alt]="card.cardType + ' of ' + card.cardSymbol">
+    </div>
+  </div>
+</div>
+
+<div id="cardsMenu" *ngIf="!betComplete && !isProcessing">
+  <div>
+    <span>Bet: </span>
+    <input [(ngModel)]="betAmount" [min]="1" [max]="denar">
+    <input [(ngModel)]="betAmount" [min]="1" [max]="denar" type="range">
+  </div>
+  <div class="btn-wrap"><button (click)="completeBet()">OK</button></div>
+</div>
+
+<button class="startGameBtn" *ngIf="betComplete && !gameStart && !isProcessing" (click)="revealCards()">OK</button>
+
+<div class="profits" *ngIf="gameStart && !gameOver">
+  <span>You {{gameResult}}</span>
+  <span>You: {{plCardValue}} | Opponent: {{opCardValue}}</span>
+  <button (click)="resetGame()">Try again?</button>
+</div>

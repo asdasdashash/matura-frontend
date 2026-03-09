@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="auth-container">
   <div class="auth-card">
     <div class="auth-header">
@@ -5,8 +6,13 @@
       <h2 class="auth-title">Create Account</h2>
       <p class="auth-subtitle">Join us and start winning!</p>
     </div>
-
+    
     <form class="auth-form" (ngSubmit)="onRegister()">
+      <!-- Add error message here -->
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
       <div class="form-group">
         <label for="username">Username</label>
         <input 
@@ -16,6 +22,7 @@
           name="username"
           placeholder="Choose a username"
           required
+          minlength="3"
         >
       </div>
 
@@ -40,6 +47,7 @@
           name="password"
           placeholder="Create a password"
           required
+          minlength="6"
         >
       </div>
 

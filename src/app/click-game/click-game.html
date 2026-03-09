@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="clicker-container">
+  <div class="clicker-header">
+    <h1>Earn Free Coins!</h1>
+    <p>Click the coin to earn money for gambling</p>
+  </div>
+  
+  <div class="stats-container">
+    <div class="stat-box">
+      <span class="stat-label">Earned</span>
+      <span class="stat-value">{{totalEarned}}</span>
+    </div>
+  </div>
+  
+  <div class="coin-container">
+    <div class="coin" 
+         [class.clicked]="clickAnimation"
+         (click)="onCoinClick()">
+      <span class="coin-symbol">$</span>
+    </div>
+    
+    <div class="floating-numbers" *ngIf="clickAnimation">
+      +1
+    </div>
+  </div>
+  
+  <button class="cashout-btn" 
+          (click)="cashout()" 
+          [disabled]="totalEarned === 0">
+    Cash Out ({{totalEarned}} coins)
+  </button>
+</div>

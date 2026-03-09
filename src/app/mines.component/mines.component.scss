@@ -51,20 +51,6 @@ li:hover {
   border: 1px solid #2c2f36;
 }
 
-#lostMessage {
-  position: fixed;
-  top: 15vh;
-  background-color: #d32f2f;
-  color: white;
-  padding: 2vh 4vh;
-  border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(211, 47, 47, 0.5);
-  font-size: 1.8rem;
-  font-weight: bold;
-  animation: shake 0.5s;
-  border: 1px solid #b71c1c;
-  z-index: 200;
-}
 
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -84,17 +70,27 @@ table {
 }
 
 td {
+  width: 10vh;
+  height: 10vh;
+  min-width: 10vh;
+  min-height: 10vh;
+  max-width: 10vh;
+  max-height: 10vh;
   transition: 0.25s;
   border-radius: 15%;
   background-color: #2c2f36;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 5rem;
+  line-height: 10vh;
+  overflow: hidden;
 }
 
 td:hover {
   scale: 1.05;
   cursor: pointer;
   background-color: #3a3f47;
-  box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
 }
 
 #mineMenu {
@@ -191,4 +187,131 @@ td:hover {
 #confirmMines:hover {
   scale: 105%;
   cursor: pointer;
+}
+
+td.clicking {
+  animation: clickPulse 0.3s ease-out;
+  background-color: #3a3f47;
+}
+
+td.safe-reveal {
+  animation: safeReveal 0.4s ease-out;
+  background-color: #3a3f47;
+}
+
+td.mine-explode {
+  animation: mineReveal 0.4s ease-out;
+  background-color: #3a3f47;
+}
+
+td.diamond-appear {
+  animation: diamondScale 0.3s ease-out;
+}
+
+td.explosion-appear {
+  animation: explosionScale 0.3s ease-out;
+}
+
+@keyframes clickPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes safeReveal {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes mineReveal {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes diamondScale {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: 5rem;
+  }
+}
+
+@keyframes explosionScale {
+  0% {
+    font-size: 0;
+  }
+  100% {
+    font-size: 5rem;
+  }
+}
+
+
+.profits {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  min-height: 15vh;
+  width: 40vh;
+  background: linear-gradient(135deg, #1a1d26 0%, #252933 100%);
+  border-radius: 15px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  color: white;
+  flex-direction: column;
+  z-index: 1100;
+  padding: 3vh 2vh;
+  border: 1px solid #3a3f4d;
+  
+  span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    
+    &:first-child {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #10b981;
+    }
+  }
+}
+
+.profits button {
+  height: 5vh;
+  width: 15vh;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.3);
+  border-radius: 25px;
+  transition: all 0.2s;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1vh;
+}
+
+.profits button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(76, 175, 80, 0.5);
 }
