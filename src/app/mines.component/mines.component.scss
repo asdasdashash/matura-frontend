@@ -82,6 +82,7 @@ td {
   font-size: clamp(1.6rem, 5vmin, 3rem);
   transition: 0.25s;
   cursor: pointer;
+  overflow: hidden;
 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
