@@ -58,15 +58,22 @@ td {
   background-color: #2c2f36;
   text-align: center;
   vertical-align: middle;
-  font-size: clamp(1.6rem, 5vmin, 3rem);
+  font-size: clamp(1.8rem, 4vmin, 2.5rem);
   transition: 0.25s;
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  
+  /* Prevent layout shift */
+  position: relative;
+  
+  /* Create a stacking context so transforms don't affect siblings */
+  isolation: isolate;
 
   &:hover {
     transform: scale(1.05);
     background-color: #3a3f47;
+    z-index: 10; /* Lift above others when hovering */
   }
 
   &.clicking {
@@ -82,6 +89,7 @@ td {
   &.mine-explode {
     animation: mineReveal 0.4s ease-out;
     background-color: #3a3f47;
+    z-index: 10;
   }
 
   &.diamond-appear {
