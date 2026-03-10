@@ -53,29 +53,30 @@ table {
 /* CELLS - Responsive */
 
 td {
-  
-  /* Fixed width and height - prevent any growth */
   width: calc((min(90vmin, 520px) - (clamp(8px, 2vmin, 18px) * 6)) / 5);
   height: calc((min(90vmin, 520px) - (clamp(8px, 2vmin, 18px) * 6)) / 5);
   min-width: 60px;
   min-height: 60px;
   max-width: 90px;
   max-height: 90px;
-  
+
   border-radius: 15%;
   background-color: #2c2f36;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: middle;  /* keeps content centered */
   font-size: 3rem;
   line-height: 1;
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  
-  /* Prevent any transitions on size */
+
   transition: background-color 0.25s;
 
+
   &:hover {
+    background-color: #3a3f47;
+  }
+
+  :active{
     background-color: #3a3f47;
   }
 
@@ -93,11 +94,13 @@ td {
 
   &.diamond-appear {
     animation: diamondScale 0.3s ease-out;
+
   }
 
   &.explosion-appear {
     animation: explosionScale 0.3s ease-out;
   }
+
 }
 
 /* MINE MENU */
@@ -253,42 +256,21 @@ td {
 
 /* ANIMATIONS */
 
-@keyframes clickPulse {
-  0% { 
-    background-color: #3a3f47;
-  }
-  50% { 
-    background-color: #4a4f57;
-  }
-  100% { 
-    background-color: #3a3f47;
-  }
-}
 
-@keyframes safeReveal {
-  0% { 
-    background-color: #2c2f36;
-  }
-  100% { 
-    background-color: #3a3f47;
-  }
-}
 
-@keyframes mineReveal {
-  0% { 
-    background-color: #2c2f36;
-  }
-  100% { 
-    background-color: #3a3f47;
-  }
-}
 
 @keyframes diamondScale {
-  0% {
+  0%{
     font-size: 0;
+    
+  }
+  60% {
+    font-size: 0;
+    
   }
   100% {
-    font-size: clamp(1.8rem, 4vmin, 2.5rem);
+    font-size: 3rem;
+    
   }
 }
 
@@ -297,6 +279,6 @@ td {
     font-size: 0;
   }
   100% {
-    font-size: clamp(1.8rem, 4vmin, 2.5rem);
+    font-size: 3rem;
   }
 }
