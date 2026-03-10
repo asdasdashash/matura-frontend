@@ -214,33 +214,33 @@
 
 #c1 {
   position: fixed;
-  top: 40%;
-  left: 38%;  /* Changed from 42% */
+  top: 38%;  /* Changed for equal spacing */
+  left: 40%;  /* Less spacing than 38% */
 }
 #c2 {
   position: fixed;
-  top: 40%;
+  top: 38%;  /* Changed for equal spacing */
   left: 50%;
 }
 #c3 {
   position: fixed;
-  top: 40%;
-  left: 62%;  /* Changed from 58% */
+  top: 38%;  /* Changed for equal spacing */
+  left: 60%;  /* Less spacing than 62% */
 }
 #c4 {
   position: fixed;
-  top: 63%;
-  left: 38%;  /* Changed from 42% */
+  top: 62%;  /* Equal spacing from top row (24% gap) */
+  left: 40%;  /* Less spacing than 38% */
 }
 #c5 {
   position: fixed;
-  top: 63%;
+  top: 62%;  /* Equal spacing from top row */
   left: 50%;
 }
 #c6 {
   position: fixed;
-  top: 63%;
-  left: 62%;  /* Changed from 58% */
+  top: 62%;  /* Equal spacing from top row */
+  left: 60%;  /* Less spacing than 62% */
 }
 
 .startGameBtn {
