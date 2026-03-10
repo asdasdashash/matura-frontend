@@ -32,7 +32,7 @@ export class CardGameComponent {
   plCardValue: number = 0;
   opCardValue: number = 0;
   currentPlayerScore: number = 0;
-  currentOpponentScore: number = 0;
+  currentdealerScore: number = 0;
   plWon: number = 0;
   drawnCards: Card[] = [];
   isProcessing: boolean = false;
@@ -72,7 +72,7 @@ export class CardGameComponent {
     this.plCardValue = 0;
     this.opCardValue = 0;
     this.currentPlayerScore = 0;
-    this.currentOpponentScore = 0;
+    this.currentdealerScore = 0;
     this.plWon = 0;
     this.drawnCards = [];
     this.cdr.detectChanges();
@@ -144,7 +144,7 @@ export class CardGameComponent {
   this.cardgameService.revealCards(this.sessionId, selectedIndices).subscribe({
     next: (response: any) => {
       let playerIndex = 0;
-      let opponentIndex = 0;
+      let dealerIndex = 0;
       
       this.drawnCards = response.cards.map((card: Card, index: number) => {
         const isPlayer = selectedIndices.includes(index);
@@ -152,8 +152,8 @@ export class CardGameComponent {
           ...card,
           isPlayerCard: isPlayer,
           playerCardIndex: isPlayer ? playerIndex++ : undefined,
-          opponentCardIndex: !isPlayer ? opponentIndex++ : undefined,
-          revealed: !isPlayer  // Auto-reveal opponent cards
+          dealerCardIndex: !isPlayer ? dealerIndex++ : undefined,
+          revealed: !isPlayer  // Auto-reveal dealer cards
         };
       });
       
@@ -168,7 +168,7 @@ export class CardGameComponent {
       
       // Set scores directly from server
       this.currentPlayerScore = 0;
-      this.currentOpponentScore = response.opCardValue;
+      this.currentdealerScore = response.opCardValue;
       
       this.cdr.detectChanges();
       

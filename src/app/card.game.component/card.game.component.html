@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
 
 <!-- Score displays -->
-<div class="score-display opponent-score" *ngIf="gameStart">
-  <span class="score-label">Opponent</span>
-  <span class="score-value">{{currentOpponentScore}}</span>
+<div class="score-display dealer-score" *ngIf="gameStart">
+  <span class="score-label">dealer</span>
+  <span class="score-value">{{currentdealerScore}}</span>
 </div>
 
 <div class="score-display player-score" *ngIf="gameStart">
@@ -20,9 +20,9 @@
 [class.player-card-0]="card.isPlayerCard && card.playerCardIndex === 0 && gameStart"
 [class.player-card-1]="card.isPlayerCard && card.playerCardIndex === 1 && gameStart"
 [class.player-card-2]="card.isPlayerCard && card.playerCardIndex === 2 && gameStart"
-[class.opponent-card-0]="!card.isPlayerCard && card.opponentCardIndex === 0 && gameStart"
-[class.opponent-card-1]="!card.isPlayerCard && card.opponentCardIndex === 1 && gameStart"
-[class.opponent-card-2]="!card.isPlayerCard && card.opponentCardIndex === 2 && gameStart"
+[class.dealer-card-0]="!card.isPlayerCard && card.dealerCardIndex === 0 && gameStart"
+[class.dealer-card-1]="!card.isPlayerCard && card.dealerCardIndex === 1 && gameStart"
+[class.dealer-card-2]="!card.isPlayerCard && card.dealerCardIndex === 2 && gameStart"
 [class.flipped]="gameStart && (!card.isPlayerCard || card.revealed)">
   
   <div class="card-inner">
@@ -51,6 +51,6 @@
 
 <div class="profits" *ngIf="gameStart && !gameOver">
   <span>You {{gameResult}}</span>
-  <span>You: {{plCardValue}} | Opponent: {{opCardValue}}</span>
+  <span>You: {{plCardValue}} | Dealer: {{opCardValue}}</span>
   <button (click)="resetGame()">Try again?</button>
 </div>

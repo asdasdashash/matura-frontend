@@ -8,7 +8,7 @@ export interface Card {
   clicked?: boolean;
   isPlayerCard?: boolean;
   playerCardIndex?: number;
-  opponentCardIndex?: number;
+  dealerCardIndex?: number;
   revealed?: boolean;
   isGolden?: boolean;
 }
