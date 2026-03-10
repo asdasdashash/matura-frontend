@@ -63,17 +63,10 @@ td {
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  
-  /* Prevent layout shift */
-  position: relative;
-  
-  /* Create a stacking context so transforms don't affect siblings */
-  isolation: isolate;
 
   &:hover {
     transform: scale(1.05);
     background-color: #3a3f47;
-    z-index: 10; /* Lift above others when hovering */
   }
 
   &.clicking {
@@ -89,7 +82,6 @@ td {
   &.mine-explode {
     animation: mineReveal 0.4s ease-out;
     background-color: #3a3f47;
-    z-index: 10;
   }
 
   &.diamond-appear {
@@ -255,19 +247,33 @@ td {
 /* ANIMATIONS */
 
 @keyframes clickPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(0.95); }
-  100% { transform: scale(1); }
+  0% { 
+    background-color: #3a3f47;
+  }
+  50% { 
+    background-color: #4a4f57;
+  }
+  100% { 
+    background-color: #3a3f47;
+  }
 }
 
 @keyframes safeReveal {
-  0% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% { 
+    background-color: #2c2f36;
+  }
+  100% { 
+    background-color: #3a3f47;
+  }
 }
 
 @keyframes mineReveal {
-  0% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% { 
+    background-color: #2c2f36;
+  }
+  100% { 
+    background-color: #3a3f47;
+  }
 }
 
 @keyframes diamondScale {
