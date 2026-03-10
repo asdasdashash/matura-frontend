@@ -272,18 +272,18 @@ td {
 
 @keyframes diamondScale {
   0% {
-    transform: scale(0);
+    font-size: 0;
   }
   100% {
-    transform: scale(1);
+    font-size: clamp(1.8rem, 4vmin, 2.5rem);
   }
 }
 
 @keyframes explosionScale {
   0% {
-    transform: scale(0);
+    font-size: 0;
   }
   100% {
-    transform: scale(1);
+    font-size: clamp(1.8rem, 4vmin, 2.5rem);
   }
 }
