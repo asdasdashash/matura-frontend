@@ -9,27 +9,6 @@
   font-family: system-ui, sans-serif;
 }
 
-/* NAVBAR LIST */
-
-ul {
-  position: fixed;
-  top: 1rem;
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  transition: 0.15s;
-
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
-}
-
 /* OVERLAY */
 
 #overlay {
@@ -58,7 +37,7 @@ li {
   border: 1px solid #2c2f36;
 }
 
-/* BOARD */
+/* BOARD - Responsive */
 
 table {
   width: min(90vmin, 520px);
@@ -71,7 +50,7 @@ table {
   border: 1px solid #2c2f36;
 }
 
-/* CELLS */
+/* CELLS - Responsive */
 
 td {
   aspect-ratio: 1 / 1;
@@ -83,7 +62,6 @@ td {
   transition: 0.25s;
   cursor: pointer;
   overflow: hidden;
-
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
   &:hover {
