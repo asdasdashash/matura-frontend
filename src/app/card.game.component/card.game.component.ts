@@ -95,7 +95,7 @@ export class CardGameComponent {
   }
 
   completeBet() {
-    console.log(this.cardsApiUrl);
+    alert(this.cardsApiUrl);
     if (this.betAmount > this.denar) {
       alert("Not enough money!");
       return;
