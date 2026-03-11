@@ -1,13 +1,20 @@
 :host {
   display: block;
   width: 100vw;
-  height: 100vh;
-  overflow: visible;
+  min-height: 100vh; /* Changed from height to min-height */
+  overflow-y: auto; /* Allow vertical scroll */
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .home-container {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh; /* Keep this */
+  overflow: visible; /* Changed from hidden to visible */
+  background: #0f1117;
+  padding-top: 10vh;
+  padding-bottom: 5vh; /* Add bottom padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .home-container {
