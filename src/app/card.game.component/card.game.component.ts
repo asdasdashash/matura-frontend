@@ -21,7 +21,9 @@ export class CardGameComponent {
   }
   private pendingBalanceUpdate: number = 0;
   sessionId: string = '';
-  cardsApiUrl = environment.apiUrl.replace('/api', '');
+  cardsApiUrl = environment.production 
+  ? 'https://api.tinzer.si'
+  : 'http://localhost:3000';
 
   betAmount: number = 15;
   potentialWinnings: number = 0;
@@ -95,7 +97,6 @@ export class CardGameComponent {
   }
 
   completeBet() {
-    alert(this.cardsApiUrl);
     if (this.betAmount > this.denar) {
       alert("Not enough money!");
       return;
