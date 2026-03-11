@@ -22,6 +22,7 @@ export class CardGameComponent {
   private pendingBalanceUpdate: number = 0;
   sessionId: string = '';
   cardsApiUrl = environment.apiUrl.replace('/api', '');
+
   betAmount: number = 15;
   potentialWinnings: number = 0;
   gameStart: boolean = false;
@@ -94,6 +95,7 @@ export class CardGameComponent {
   }
 
   completeBet() {
+    console.log(this.cardsApiUrl);
     if (this.betAmount > this.denar) {
       alert("Not enough money!");
       return;
