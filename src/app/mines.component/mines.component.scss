@@ -89,7 +89,7 @@ td {
   }
 
   &.clicking {
-    animation: clickPulse 0.3s ease-out;
+    animation: clickPulse 0.3s ease-out forwards;
   }
 
   &.safe-reveal {
@@ -270,27 +270,76 @@ td::before {
   vertical-align: middle;
 }
 
+@keyframes clickPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes safeReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background-color: #3a3f47;
+  }
+}
+
+@keyframes mineReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background-color: #3a3f47;
+  }
+}
 
 @keyframes diamondScale {
-  0%{
+  0% {
     font-size: 0;
-    
+    opacity: 0;
   }
   60% {
     font-size: 0;
-    
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
   }
   100% {
     font-size: 3rem;
-    
+    opacity: 1;
   }
 }
 
 @keyframes explosionScale {
   0% {
     font-size: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
   }
   100% {
     font-size: 3rem;
+    opacity: 1;
   }
+}
+
+.cell-hidden {
+  background: transparent !important;
+  box-shadow: none;
+  border: none;
 }

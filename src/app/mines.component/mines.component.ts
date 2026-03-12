@@ -181,21 +181,28 @@ export class MinesComponent {
           this.isProcessing = false;
           this.cdr.detectChanges();
         }, 800);
-      } else {
-        // Start animation immediately
-        cell.classList.add('safe-reveal');
-        
-        // Delay the diamond emoji reveal
+      } 
+      else {
+     // shrink the tile first
+        cell.classList.add('clicking');
+
         setTimeout(() => {
-          cell.textContent = '💎';
-          cell.classList.add('diamond-appear');
-          this.cdr.detectChanges();
-        }, 200);
-        
-        this.stevecMin = response.safeCellsRevealed; 
-        this.currentMultiplier = response.currentMultiplier; 
-        this.isProcessing = false;
-      }
+        cell.classList.remove('clicking');
+
+        // hide the tile background
+        cell.classList.add('cell-hidden');
+
+        // show diamond
+        cell.textContent = '💎';
+        cell.classList.add('diamond-appear');
+
+        this.cdr.detectChanges();
+        }, 250);
+
+  this.stevecMin = response.safeCellsRevealed; 
+  this.currentMultiplier = response.currentMultiplier; 
+  this.isProcessing = false;
+}
       
       this.cdr.detectChanges();
     },
