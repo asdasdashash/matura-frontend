@@ -1,9 +1,7 @@
 :host {
   display: block;
-  width: 100vw;
-  min-height: 100vh; /* Changed from height to min-height */
-  overflow-y: auto; /* Allow vertical scroll */
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
+  min-height: 100vh;
 }
 
 .home-container {
@@ -20,7 +18,8 @@
 .home-container {
   min-height: 100vh;
   background: #0f1117;
-  padding-top: 10vh;
+  padding-top: 80px;
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +36,6 @@
   font-weight: bold;
   margin-bottom: 1rem;
   background: white;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
