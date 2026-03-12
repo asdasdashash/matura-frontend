@@ -27,6 +27,16 @@ export class RegisterComponent {
   onRegister() {
     this.errorMessage = '';
 
+   
+  // Simple email validation
+    if (!this.email.includes('@') || this.email.includes(' ')) {
+      console.log('Invalid email');
+      return; // Stop execution
+    }
+
+
+    
+
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Passwords do not match!';
       return;
