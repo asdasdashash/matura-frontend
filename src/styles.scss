@@ -1,14 +1,10 @@
 
+.home-container {
+  background: #0f1117;
+  padding-top: 80px;
+  padding-bottom: 60px;
 
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: auto;
-  overflow-x: hidden;
-  position: fixed;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  background-color: #0f1117;
-  min-height: 100%;
+  align-items: center;
 }
