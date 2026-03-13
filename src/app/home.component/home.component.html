@@ -3,50 +3,82 @@
   <div class="hero-section">
     <h1 class="hero-title">TINZER</h1>
   </div>
-  
+
   <div class="games-grid">
     <div class="game-card" 
          [class.disabled]="!isLoggedIn"
          (click)="navigateToGame('/mines')">
       <div class="game-icon">💣</div>
       <h2 class="game-title">Mines</h2>
-      <p class="game-description">*Insert pametni description here*</p>
-      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
-        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
-      </div>
-    </div>
-    
-    <div class="game-card" 
-         [class.disabled]="!isLoggedIn"
-         (click)="navigateToGame('/ballz')">
-      <div class="game-icon">🎈</div>
-      <h2 class="game-title">Balloon</h2>
-      <p class="game-description">*Insert pametni description here*</p>
-      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
-        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
-      </div>
-    </div>
-    
-    <div class="game-card" 
-         [class.disabled]="!isLoggedIn"
-         (click)="navigateToGame('/cardGame')">
-      <div class="game-icon">🃏</div>
-      <h2 class="game-title">Cards</h2>
-      <p class="game-description">*Insert pametni description here*</p>
+      <p class="game-description">Avoid the bombs and cash out before it's too late!</p>
       <div class="play-button" [class.disabled-btn]="!isLoggedIn">
         {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
       </div>
     </div>
 
     <div class="game-card" 
-     [class.disabled]="!isLoggedIn"
-     (click)="navigateToGame('/click-game')">
-  <div class="game-icon">💰</div>
-  <h2 class="game-title">Free Coins</h2>
-  <p class="game-description">Click to earn free money!</p>
-  <div class="play-button" [class.disabled-btn]="!isLoggedIn">
-    {{ isLoggedIn ? 'Earn Now' : 'Login to Play' }}
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/ballz')">
+      <div class="game-icon">🎈</div>
+      <h2 class="game-title">Balloon</h2>
+      <p class="game-description">Pump it up and cash out before it pops!</p>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
+      </div>
+    </div>
+
+    <div class="game-card" 
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/cardGame')">
+      <div class="game-icon">🃏</div>
+      <h2 class="game-title">Cards</h2>
+      <p class="game-description">Pick your cards and beat the dealer!</p>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Play Now' : 'Login to Play' }}
+      </div>
+    </div>
+
+    <div class="game-card" 
+         [class.disabled]="!isLoggedIn"
+         (click)="navigateToGame('/click-game')">
+      <div class="game-icon">💰</div>
+      <h2 class="game-title">Free Coins</h2>
+      <p class="game-description">Click to earn free money!</p>
+      <div class="play-button" [class.disabled-btn]="!isLoggedIn">
+        {{ isLoggedIn ? 'Earn Now' : 'Login to Play' }}
+      </div>
+    </div>
   </div>
-</div>
+
+  <!-- LEADERBOARD TABLE -->
+  <div class="leaderboard-section" *ngIf="leaderboard.length > 0">
+    <h2 class="leaderboard-title">🏆 Top Players</h2>
+    <table class="leaderboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of leaderboard; let i = index" 
+            [class.gold]="i === 0" 
+            [class.silver]="i === 1" 
+            [class.bronze]="i === 2">
+          <td class="rank-cell">
+            <div class="rank-badge" 
+                 [class.gold]="i === 0" 
+                 [class.silver]="i === 1" 
+                 [class.bronze]="i === 2">
+              {{ i + 1 }}
+            </div>
+          </td>
+          <td class="username-cell">{{ user.username }}</td>
+          <td class="balance-cell">{{ user.balance.toFixed(2) }} €</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </div>
