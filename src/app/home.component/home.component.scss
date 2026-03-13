@@ -269,3 +269,75 @@
     font-size: 0.9rem;
   }
 }
+
+/* MOBILE LEADERBOARD FIX */
+@media (max-width: 768px) {
+
+  .leaderboard-section {
+    margin-top: 3vh;
+    padding: 0 2vw;
+  }
+
+  .leaderboard-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .leaderboard-table {
+    font-size: 0.9rem;
+  }
+
+  .leaderboard-table thead th {
+    padding: 1rem 0.7rem;
+    font-size: 0.85rem;
+  }
+
+  .leaderboard-table tbody td {
+    padding: 1rem 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  .rank-badge {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .username-cell {
+    font-size: 1rem;
+  }
+
+  .balance-cell {
+    font-size: 1.05rem;
+  }
+
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 480px) {
+
+  .leaderboard-table thead th {
+    font-size: 0.75rem;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .leaderboard-table tbody td {
+    font-size: 0.85rem;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .rank-badge {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .username-cell {
+    font-size: 0.9rem;
+  }
+
+  .balance-cell {
+    font-size: 0.95rem;
+  }
+
+}
