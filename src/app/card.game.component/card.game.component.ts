@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, ChangeDetectorRef, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { BalanceService } from '../balance.service';
 import { CardgameService } from '../cardgame.service';
 import { BalloonService } from '../balloon.service';
@@ -62,7 +62,16 @@ export class CardGameComponent {
     console.log('After refreshBalance - Balance:', this.balanceService.balance);
   }, 500);
 }
-
+@HostListener('document:keydown.enter')
+handleEnter() {
+  if (!this.betComplete && !this.isProcessing) {
+    // Placing bet
+    this.completeBet();
+  } else if (this.betComplete && !this.gameStart && !this.isProcessing) {
+    // Revealing cards
+    this.revealCards();
+  }
+}
   get denar() {
     return this.balanceService.balance;
   }

@@ -1,5 +1,5 @@
 // ballz.component.ts
-import { Component, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, HostListener, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 import { BalanceService } from '../balance.service';
@@ -38,9 +38,18 @@ export class BallzComponent {
     private balloonService: BalloonService,
     private authService: AuthService,
     private cdr: ChangeDetectorRef
-  ) {
-    this.loadBalance();
+  ) {}
+
+  @HostListener('document:keydown.enter')
+handleEnter() {
+  if (this.gameOver && !this.isProcessing) {
+    // Start game when menu is open
+    this.startGame();
+  } else if (this.gameStart && !this.isProcessing && this.currentMultiplier > 1) {
+    // Cash out during game
+    this.cashoutFun();
   }
+}
   
   get denar() {
     return this.balanceService.balance;

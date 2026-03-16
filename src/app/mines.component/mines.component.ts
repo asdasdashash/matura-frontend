@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChildren, QueryList, ElementRef, ChangeDetectorRef, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BalanceService } from '../balance.service';
 import { MinesService } from '../mines.service';
@@ -42,6 +42,14 @@ export class MinesComponent {
 ) {
   // You don't need loadBalance() here if your 
   // BalanceService handles it like in the Card Game.
+}
+
+
+@HostListener('document:keydown.enter')
+handleEnter() {
+  if (this.mineMenuOpen && !this.isProcessing) {
+    this.confirmMines();
+  }
 }
 
   get denar() {

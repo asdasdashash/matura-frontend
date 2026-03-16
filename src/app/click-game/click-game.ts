@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { HostListener, Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar.component/navbar.component';
 import { BalanceService } from '../balance.service';
@@ -43,6 +43,15 @@ export class ClickGameComponent implements OnInit {
     }
     this.startSession();
   }
+
+  @HostListener('document:keydown.enter')
+handleEnterClick() {
+  if (this.isPlaying && !this.isProcessing) {
+    this.cashout()
+  }
+}
+
+
   
   startSession() {
     this.clickerService.startSession(this.userId).subscribe({
